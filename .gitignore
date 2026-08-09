@@ -1,0 +1,4 @@
+docs/
+video/
+.playwright-mcp/
+.spec-workflow/

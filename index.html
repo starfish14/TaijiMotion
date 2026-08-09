@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>太极动作捕捉 | MediaPipe Tasks Vision</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <h1>太极动作捕捉</h1>
+      <p class="subtitle">实时姿态评估 · 四项指标反馈</p>
+    </header>
+
+    <div class="workspace">
+      <!-- 左侧：摄像头 + 骨架绘制 -->
+      <section class="panel capture-panel">
+        <div class="stage-wrap">
+          <video id="camera" autoplay playsinline muted></video>
+          <canvas id="overlay"></canvas>
+          <div id="status" class="status-badge">准备中：正在加载模型...</div>
+        </div>
+        <div class="controls">
+          <button id="toggleCamera" class="btn">开启摄像头</button>
+          <p class="hint">视频仅在浏览器本地处理，不上传原始画面</p>
+        </div>
+      </section>
+
+      <!-- 右侧：四项指标 + 教练提示 -->
+      <section class="panel stats-panel">
+        <div class="score-block">
+          <div class="score-label">太极综合指数</div>
+          <div id="overallScore" class="score-value">--</div>
+          <div id="posePhase" class="phase-text">等待动作...</div>
+        </div>
+
+        <div class="meter-group">
+          <div class="meter-row">
+            <span>中轴稳定</span>
+            <span id="postureValue">--</span>
+          </div>
+          <div class="meter"><span id="postureBar"></span></div>
+
+          <div class="meter-row">
+            <span>动作平顺</span>
+            <span id="smoothValue">--</span>
+          </div>
+          <div class="meter"><span id="smoothBar"></span></div>
+
+          <div class="meter-row">
+            <span>下盘稳度</span>
+            <span id="stanceValue">--</span>
+          </div>
+          <div class="meter"><span id="stanceBar"></span></div>
+
+          <div class="meter-row">
+            <span>开合节奏</span>
+            <span id="rhythmValue">--</span>
+          </div>
+          <div class="meter"><span id="rhythmBar"></span></div>
+        </div>
+
+        <div class="coach-block">
+          <h3>动作提示</h3>
+          <ul id="coachList">
+            <li>等待检测到人体后开始反馈。</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>MediaPipe Tasks Vision · 本地推理 · 不上传视频</p>
+    </footer>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>

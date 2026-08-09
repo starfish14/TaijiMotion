@@ -1,0 +1,263 @@
+/* ===== CSS Variables ===== */
+:root {
+  --bg-color: #f5f2eb;
+  --card-bg: #fffdf8;
+  --text-main: #2f2b25;
+  --text-sub: #6d6458;
+  --accent: #1f5f52;
+  --accent-2: #9b744a;
+  --line: #ddd5c8;
+  --shadow: 0 8px 30px rgba(59, 45, 22, 0.06);
+  --font-sans: "Noto Sans SC", sans-serif;
+  --font-serif: "Noto Serif SC", serif;
+  --border-radius: 16px;
+}
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(circle at 0% 0%, #ffffff99, transparent 38%),
+    radial-gradient(circle at 100% 100%, #e7dfcf88, transparent 34%),
+    var(--bg-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 36px;
+}
+
+/* ===== Header ===== */
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--text-main);
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  color: var(--text-sub);
+}
+
+/* ===== Workspace (2-column) ===== */
+.workspace {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 16px;
+}
+
+/* ===== Panel Card ===== */
+.panel {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* ===== Camera Panel ===== */
+.stage-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1c3a36;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #3b6e68;
+}
+
+#camera,
+#overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+#overlay {
+  pointer-events: none;
+}
+
+.status-badge {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  right: 12px;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  color: #f7fffd;
+  border: 1px solid #8bb7a7aa;
+  background: #193f39d8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.controls {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: #f6fffc;
+  background: linear-gradient(130deg, var(--accent), #2f7265);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px #1f5f5235;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 0.84rem;
+}
+
+/* ===== Score Block ===== */
+.score-block {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  background: linear-gradient(140deg, #faf6ee, #f3eadc);
+  text-align: center;
+}
+
+.score-label {
+  color: var(--text-sub);
+  font-size: 0.84rem;
+}
+
+.score-value {
+  margin-top: 4px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: var(--font-serif);
+}
+
+.phase-text {
+  margin-top: 6px;
+  color: var(--accent-2);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+/* ===== Meter Group ===== */
+.meter-group {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.meter-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+}
+
+.meter-row span:first-child {
+  color: var(--text-main);
+}
+
+.meter-row span:last-child {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.meter {
+  height: 10px;
+  border-radius: 999px;
+  background: #e4ddcf;
+  overflow: hidden;
+}
+
+.meter > span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #9dc1b3, #4f7f72);
+  transition: width 180ms ease;
+}
+
+/* ===== Coach Block ===== */
+.coach-block {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+
+.coach-block h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  font-family: var(--font-serif);
+}
+
+#coachList {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-sub);
+  line-height: 1.65;
+  font-size: 0.86rem;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  margin-top: 28px;
+  color: #999;
+  font-size: 0.82rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 860px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    padding: 16px 12px 24px;
+  }
+}
